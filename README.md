@@ -1,5 +1,7 @@
 # MIDAS Beta v0.1
 
+## Deprecation Warning: This repository is deprecated as we've opened up the [internal MIDAS github repository](https://github.com/ucb-bar/midas). Please open issues and PRs there. 
+
 MIDAS is a simulation framework that automatically generates an FPGA-accelerated simulator from a Chisel-based RTL design. MIDAS expands on the work of [Strober](http://dl.acm.org/citation.cfm?id=3001151) that was originally developed for sample-based energy simulation.
 
 ## Host vs Target 
