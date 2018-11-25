@@ -15,10 +15,6 @@ rocketchip_t::rocketchip_t(int argc, char** argv, fesvr_proxy_t* fesvr): fesvr(f
     if (arg.find("+max-cycles=") == 0) {
       max_cycles = atoi(arg.c_str()+12);
     }
-    //TODO: Specify this in cycles, not iterations of inner loop
-    if (arg.find("+profile-interval=") == 0) {
-      profile_interval = atoi(arg.c_str()+18);
-    }
   }
 
   add_endpoint(new uart_t(this));
@@ -38,7 +34,7 @@ rocketchip_t::rocketchip_t(int argc, char** argv, fesvr_proxy_t* fesvr): fesvr(f
                  MEMMODEL_0_W_num_registers,
                  (const unsigned int*) MEMMODEL_0_W_addrs,
                  (const char* const*) MEMMODEL_0_W_names),
-      argc, argv, "memory_stats.csv"));
+      argc, argv));
 #endif
 
 }
@@ -81,7 +77,6 @@ void rocketchip_t::loadmem() {
 void rocketchip_t::loop(size_t step_size) {
   size_t delta = GET_DELTA;
   size_t delta_sum = 0;
-  size_t profile_count = 0;
 
   do {
     if (fesvr->busy()) {
@@ -110,15 +105,6 @@ void rocketchip_t::loop(size_t step_size) {
         }
       }
       loadmem();
-
-      // Every profile_interval iterations, collect state from all fpga models
-      profile_count++;
-      if (profile_interval != 0 && profile_count == profile_interval) {
-        for (auto mod: fpga_models) {
-          mod->profile();
-        }
-        profile_count = 0;
-      }
 
       if (delta_sum == step_size) delta_sum = 0;
     }
