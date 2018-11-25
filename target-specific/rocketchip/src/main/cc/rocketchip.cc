@@ -150,7 +150,7 @@ void rocketchip_t::run(size_t step_size) {
   } else if (cycles() > max_cycles) {
     fprintf(stderr, "*** FAILED *** (timeout) after %llu cycles\n", cycles());
   } else {
-    fprintf(stderr, "*** PASSED *** after %llu cycles\n", cycles());
+    fprintf(stderr, "Completed after %llu cycles\n", cycles());
   }
   expect(!exitcode, NULL);
 
