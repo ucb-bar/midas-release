@@ -1,10 +1,10 @@
-# MIDAS Beta v0.1
+# MIDAS/Strober v1.0
 
-## Deprecation Warning: This repository is deprecated as we've opened up the [internal MIDAS github repository](https://github.com/ucb-bar/midas). Please open issues and PRs there. 
+## This repo has the core implementation of MIDAS/Strober v1.0 to demonstrate the Strober energy modeling with [small examples](https://github.com/ucb-bar/midas-examples) and [RocketChip/BOOM-v1](https://github.com/ucb-bar/midas-top-release).  The future release will be through [the main repository](https://github.com/ucb-bar/midas) along with [FireSim](https://github.com/firesim/firesim). Please open issues and PRs there.
 
 MIDAS is a simulation framework that automatically generates an FPGA-accelerated simulator from a Chisel-based RTL design. MIDAS expands on the work of [Strober](http://dl.acm.org/citation.cfm?id=3001151) that was originally developed for sample-based energy simulation.
 
-## Host vs Target 
+## Host vs Target
 
 To avoid confusion, we make a distinction between *host* and *target* machines.
 
